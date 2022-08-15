@@ -75,6 +75,18 @@ TEST(TestDecrementFloor_third,ElevatorTests){
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
+TEST(TestsetDestination_third,ElevatorTests){
+    const int startingFloor = 5;
+    const int endingFloor = 10;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = StateOfElevator::isMoving;
+    const int calculatedResult = testElevator.setDestination(endingFloor);
+
+    const int finalDestination = testElevator.getFloor();
+    ASSERT_EQ(expectedResult,calculatedResult);
+    ASSERT_EQ(finalDestination,endingFloor);
+}
+
 int main(int argc, char *argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
