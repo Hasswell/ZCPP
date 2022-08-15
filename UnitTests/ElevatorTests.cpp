@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../Elevator.hpp"
+#include <iostream>
 
 
 TEST(TestElevatorFloor_first,ElevatorTests){
@@ -7,7 +8,7 @@ TEST(TestElevatorFloor_first,ElevatorTests){
     Elevator testElevator(startingFloor);
     const int expectedResult = startingFloor;
     const int calculatedResult = testElevator.getFloor();
-    ASSERT_EQ(expectedResult,expectedResult);
+    ASSERT_EQ(expectedResult,calculatedResult);
 }
 
 TEST(TestElevatorFloor_second,ElevatorTests){
@@ -15,7 +16,7 @@ TEST(TestElevatorFloor_second,ElevatorTests){
     Elevator testElevator(startingFloor);
     const int expectedResult = startingFloor;
     const int calculatedResult = testElevator.getFloor();
-    ASSERT_EQ(expectedResult,expectedResult);
+    ASSERT_EQ(expectedResult,calculatedResult);
 }
 
 TEST(TestElevatorFloor_third,ElevatorTests){
@@ -23,7 +24,17 @@ TEST(TestElevatorFloor_third,ElevatorTests){
     Elevator testElevator(startingFloor);
     const int expectedResult = startingFloor;
     const int calculatedResult = testElevator.getFloor();
-    ASSERT_EQ(expectedResult,expectedResult);
+    ASSERT_EQ(expectedResult,calculatedResult);
+}
+
+TEST(TestIncrementFloor_first,ElevatorTests){
+    const int startingFloor = -3;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = startingFloor;
+    const int calculatedResult = testElevator.incrementFloor();\
+    std::cout << "Calculated Resutl: " << calculatedResult << std::endl;
+    std::cout << "Expected Resutl: " << expectedResult << std::endl;
+    ASSERT_EQ(expectedResult,calculatedResult);
 }
 
 int main(int argc, char *argv[]) {
