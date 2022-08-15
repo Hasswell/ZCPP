@@ -26,9 +26,11 @@ int Elevator::getFloor(){
 }
 
 int Elevator::incrementFloor(){
-    return 1;
+    this->mFloor++;
+    return getFloor();
 }
 
 int Elevator::decrementFloor(){
-    return 1;
+    this->mFloor--;
+    return getFloor();
 }

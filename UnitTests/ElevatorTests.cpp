@@ -30,10 +30,48 @@ TEST(TestElevatorFloor_third,ElevatorTests){
 TEST(TestIncrementFloor_first,ElevatorTests){
     const int startingFloor = -3;
     Elevator testElevator(startingFloor);
-    const int expectedResult = startingFloor;
+    const int expectedResult = -2;
     const int calculatedResult = testElevator.incrementFloor();\
-    std::cout << "Calculated Resutl: " << calculatedResult << std::endl;
-    std::cout << "Expected Resutl: " << expectedResult << std::endl;
+    ASSERT_EQ(expectedResult,calculatedResult);
+}
+
+TEST(TestIncrementFloor_second,ElevatorTests){
+    const int startingFloor = 0;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = 1;
+    const int calculatedResult = testElevator.incrementFloor();\
+    ASSERT_EQ(expectedResult,calculatedResult);
+}
+
+TEST(TestIncrementFloor_third,ElevatorTests){
+    const int startingFloor = 5;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = 6;
+    const int calculatedResult = testElevator.incrementFloor();\
+    ASSERT_EQ(expectedResult,calculatedResult);
+}
+
+TEST(TestDecrementFloor_first,ElevatorTests){
+    const int startingFloor = -3;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = -4;
+    const int calculatedResult = testElevator.decrementFloor();\
+    ASSERT_EQ(expectedResult,calculatedResult);
+}
+
+TEST(TestDecrementFloor_second,ElevatorTests){
+    const int startingFloor = 0;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = -1;
+    const int calculatedResult = testElevator.decrementFloor();\
+    ASSERT_EQ(expectedResult,calculatedResult);
+}
+
+TEST(TestDecrementFloor_third,ElevatorTests){
+    const int startingFloor = 5;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = 4;
+    const int calculatedResult = testElevator.decrementFloor();\
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
