@@ -2,8 +2,28 @@
 #include "../Elevator.hpp"
 
 
-TEST(SimpleTest,ElevatorTests){
-    ASSERT_EQ(1,1);
+TEST(TestElevatorFloor_first,ElevatorTests){
+    const int startingFloor = 4;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = startingFloor;
+    const int calculatedResult = testElevator.getFloor();
+    ASSERT_EQ(expectedResult,expectedResult);
+}
+
+TEST(TestElevatorFloor_second,ElevatorTests){
+    const int startingFloor = 10;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = startingFloor;
+    const int calculatedResult = testElevator.getFloor();
+    ASSERT_EQ(expectedResult,expectedResult);
+}
+
+TEST(TestElevatorFloor_third,ElevatorTests){
+    const int startingFloor = -3;
+    Elevator testElevator(startingFloor);
+    const int expectedResult = startingFloor;
+    const int calculatedResult = testElevator.getFloor();
+    ASSERT_EQ(expectedResult,expectedResult);
 }
 
 int main(int argc, char *argv[]) {
