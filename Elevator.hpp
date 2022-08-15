@@ -22,7 +22,7 @@ public:
 
 
 int Elevator::getFloor(){
-    return 1;
+    return this->mFloor;
 }
 
 int Elevator::incrementFloor(){
