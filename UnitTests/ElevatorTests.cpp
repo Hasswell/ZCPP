@@ -2,83 +2,53 @@
 #include "../Elevator.hpp"
 #include <iostream>
 
-
-TEST(TestElevatorFloor_first,ElevatorTests){
-    const int startingFloor = 4;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = startingFloor;
-    const int calculatedResult = testElevator.getFloor();
-    ASSERT_EQ(expectedResult,calculatedResult);
-}
-
-TEST(TestElevatorFloor_second,ElevatorTests){
-    const int startingFloor = 10;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = startingFloor;
-    const int calculatedResult = testElevator.getFloor();
-    ASSERT_EQ(expectedResult,calculatedResult);
-}
-
-TEST(TestElevatorFloor_third,ElevatorTests){
-    const int startingFloor = -3;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = startingFloor;
-    const int calculatedResult = testElevator.getFloor();
-    ASSERT_EQ(expectedResult,calculatedResult);
-}
-
 TEST(TestIncrementFloor_first,ElevatorTests){
-    const int startingFloor = -3;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = -2;
-    const int calculatedResult = testElevator.incrementFloor();\
+    const int minFloor = -3;
+    const int maxFloor = -1;
+    Elevator testElevator(minFloor,maxFloor);
+    const int startingFloor = testElevator.getFloor();
+    const int expectedResult = startingFloor + 1;
+    testElevator.incrementFloor();
+    const int calculatedResult = testElevator.getFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
 TEST(TestIncrementFloor_second,ElevatorTests){
-    const int startingFloor = 0;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = 1;
-    const int calculatedResult = testElevator.incrementFloor();\
-    ASSERT_EQ(expectedResult,calculatedResult);
-}
-
-TEST(TestIncrementFloor_third,ElevatorTests){
-    const int startingFloor = 5;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = 6;
-    const int calculatedResult = testElevator.incrementFloor();\
+    const int minFloor = -5;
+    const int maxFloor = -1;
+    Elevator testElevator(minFloor,maxFloor);
+    const int expectedResult = testElevator.getFloor() + 2;
+    testElevator.incrementFloor();
+    testElevator.incrementFloor();
+    const int calculatedResult = testElevator.getFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
 TEST(TestDecrementFloor_first,ElevatorTests){
-    const int startingFloor = -3;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = -4;
-    const int calculatedResult = testElevator.decrementFloor();\
+    const int minFloor = -5;
+    const int maxFloor = -1;
+    Elevator testElevator(minFloor,maxFloor);
+    const int expectedResult = testElevator.getFloor() - 2;
+    testElevator.decrementFloor();
+    testElevator.decrementFloor();
+    const int calculatedResult = testElevator.getFloor() ;
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
 TEST(TestDecrementFloor_second,ElevatorTests){
-    const int startingFloor = 0;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = -1;
-    const int calculatedResult = testElevator.decrementFloor();\
-    ASSERT_EQ(expectedResult,calculatedResult);
-}
-
-TEST(TestDecrementFloor_third,ElevatorTests){
-    const int startingFloor = 5;
-    Elevator testElevator(startingFloor);
-    const int expectedResult = 4;
-    const int calculatedResult = testElevator.decrementFloor();\
+    const int minFloor = -3;
+    const int maxFloor = -1;
+    Elevator testElevator(minFloor,maxFloor);
+    const int expectedResult = testElevator.getFloor() - 1;
+    const int calculatedResult = testElevator.decrementFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
 TEST(TestsetDestination_third,ElevatorTests){
-    const int startingFloor = 5;
-    const int endingFloor = 10;
-    Elevator testElevator(startingFloor);
+    const int minFloor = -3;
+    const int maxFloor = -1;
+    const int endingFloor = -1;
+    Elevator testElevator(minFloor,maxFloor);
     const int expectedResult = StateOfElevator::isMoving;
     const int calculatedResult = testElevator.setDestination(endingFloor);
 

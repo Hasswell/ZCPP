@@ -1,5 +1,7 @@
 
 #include <cassert>
+#include <ctime>
+#include <random>
 
 enum StateOfElevator{
     isFree,
@@ -16,15 +18,12 @@ private:
     int mMinFloor;
     int mMaxFloor;
 public:
-    Elevator(int floor) : mCurrentFloor(floor){
-        mState = StateOfElevator::isFree;
-    }
-
-    Elevator(int minFloor, int maxFloor) : mCurrentFloor(0){
+    Elevator(int minFloor, int maxFloor){
         assert(maxFloor > minFloor);
         mState = StateOfElevator::isFree;
         mMinFloor = minFloor;
         mMaxFloor = maxFloor;
+        mCurrentFloor = (mMinFloor + mMaxFloor) / 2;
     }
     int incrementFloor();
     int decrementFloor();
@@ -59,11 +58,17 @@ int Elevator::getMinFloor(){
 }
 
 int Elevator::incrementFloor(){
+    if(this->mCurrentFloor + 1 > mMaxFloor){
+        return getFloor();
+    }
     this->mCurrentFloor++;
     return getFloor();
 }
 
 int Elevator::decrementFloor(){
+    if(this->mCurrentFloor -1 < mMinFloor){
+        return getFloor();
+    }
     this->mCurrentFloor--;
     return getFloor();
 }
