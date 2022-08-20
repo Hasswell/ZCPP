@@ -22,6 +22,7 @@ public:
 
     Elevator(int minFloor, int maxFloor) : mCurrentFloor(0){
         assert(maxFloor > minFloor);
+        mState = StateOfElevator::isFree;
         mMinFloor = minFloor;
         mMaxFloor = maxFloor;
     }
