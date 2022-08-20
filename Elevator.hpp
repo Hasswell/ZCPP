@@ -29,24 +29,30 @@ public:
     }
     int incrementFloor();
     int decrementFloor();
-    int getFloor();
+    
     int getMinFloor();
     int getMaxFloor();
+
+    //final methods for the interface:
     StateOfElevator getStatus();
     StateOfElevator setDestination(int destination);
-
+    int getCurrentFloor();
+private:
+    //private methods for the checking
+    
 };
 
 StateOfElevator Elevator::setDestination(int destination){
+    this->mState = StateOfElevator::isMoving;
     mCurrentFloor = destination;
-    return StateOfElevator::isMoving;
+    return StateOfElevator::isFree;
 }
 
 StateOfElevator Elevator::getStatus(){
     return this->mState;
 }
 
-int Elevator::getFloor(){
+int Elevator::getCurrentFloor(){
     return this->mCurrentFloor;
 }
 
@@ -61,18 +67,18 @@ int Elevator::getMinFloor(){
 
 int Elevator::incrementFloor(){
     if(this->mCurrentFloor + 1 > mMaxFloor){
-        return getFloor();
+        return getCurrentFloor();
     }
     this->mCurrentFloor++;
-    return getFloor();
+    return getCurrentFloor();
 }
 
 int Elevator::decrementFloor(){
     if(this->mCurrentFloor -1 < mMinFloor){
-        return getFloor();
+        return getCurrentFloor();
     }
     this->mCurrentFloor--;
-    return getFloor();
+    return getCurrentFloor();
 }
 
 

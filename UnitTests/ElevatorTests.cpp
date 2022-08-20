@@ -6,10 +6,10 @@ TEST(TestIncrementFloor_first,ElevatorTests){
     const int minFloor = -3;
     const int maxFloor = -1;
     Elevator testElevator(minFloor,maxFloor);
-    const int startingFloor = testElevator.getFloor();
+    const int startingFloor = testElevator.getCurrentFloor();
     const int expectedResult = startingFloor + 1;
     testElevator.incrementFloor();
-    const int calculatedResult = testElevator.getFloor();
+    const int calculatedResult = testElevator.getCurrentFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
@@ -17,10 +17,10 @@ TEST(TestIncrementFloor_second,ElevatorTests){
     const int minFloor = -5;
     const int maxFloor = -1;
     Elevator testElevator(minFloor,maxFloor);
-    const int expectedResult = testElevator.getFloor() + 2;
+    const int expectedResult = testElevator.getCurrentFloor() + 2;
     testElevator.incrementFloor();
     testElevator.incrementFloor();
-    const int calculatedResult = testElevator.getFloor();
+    const int calculatedResult = testElevator.getCurrentFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
@@ -28,10 +28,10 @@ TEST(TestDecrementFloor_first,ElevatorTests){
     const int minFloor = -5;
     const int maxFloor = -1;
     Elevator testElevator(minFloor,maxFloor);
-    const int expectedResult = testElevator.getFloor() - 2;
+    const int expectedResult = testElevator.getCurrentFloor() - 2;
     testElevator.decrementFloor();
     testElevator.decrementFloor();
-    const int calculatedResult = testElevator.getFloor() ;
+    const int calculatedResult = testElevator.getCurrentFloor() ;
     ASSERT_EQ(expectedResult,calculatedResult);
 }
 
@@ -39,7 +39,7 @@ TEST(TestDecrementFloor_second,ElevatorTests){
     const int minFloor = -3;
     const int maxFloor = -1;
     Elevator testElevator(minFloor,maxFloor);
-    const int expectedResult = testElevator.getFloor() - 1;
+    const int expectedResult = testElevator.getCurrentFloor() - 1;
     const int calculatedResult = testElevator.decrementFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
 }
@@ -49,10 +49,10 @@ TEST(TestsetDestination_third,ElevatorTests){
     const int maxFloor = -1;
     const int endingFloor = -1;
     Elevator testElevator(minFloor,maxFloor);
-    const int expectedResult = StateOfElevator::isMoving;
+    const int expectedResult = StateOfElevator::isFree;
     const int calculatedResult = testElevator.setDestination(endingFloor);
 
-    const int finalDestination = testElevator.getFloor();
+    const int finalDestination = testElevator.getCurrentFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
     ASSERT_EQ(finalDestination,endingFloor);
 }
