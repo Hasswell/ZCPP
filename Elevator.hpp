@@ -1,3 +1,5 @@
+#ifndef ELEVATOR_HPP
+#define ELEVATOR_HPP
 
 #include <cassert>
 #include <ctime>
@@ -72,3 +74,6 @@ int Elevator::decrementFloor(){
     this->mCurrentFloor--;
     return getFloor();
 }
+
+
+#endif
