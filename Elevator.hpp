@@ -1,5 +1,5 @@
 
-
+#include <cassert>
 
 enum StateOfElevator{
     isFree,
@@ -13,9 +13,17 @@ class Elevator{
 private:
     int mCurrentFloor;
     StateOfElevator mState;
+    int mMinFloor;
+    int mMaxFloor;
 public:
     Elevator(int floor) : mCurrentFloor(floor){
         mState = StateOfElevator::isFree;
+    }
+
+    Elevator(int minFloor, int maxFloor) : mCurrentFloor(0){
+        assert(maxFloor > minFloor);
+        mMinFloor = minFloor;
+        mMaxFloor = maxFloor;
     }
     int incrementFloor();
     int decrementFloor();
@@ -42,11 +50,11 @@ int Elevator::getFloor(){
 
 
 int Elevator::getMaxFloor(){
-    return this->mCurrentFloor;
+    return this->mMaxFloor;
 }
 
 int Elevator::getMinFloor(){
-    return this->mCurrentFloor;
+    return this->mMinFloor;
 }
 
 int Elevator::incrementFloor(){

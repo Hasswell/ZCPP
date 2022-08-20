@@ -88,9 +88,9 @@ TEST(TestsetDestination_third,ElevatorTests){
 }
 
 TEST(TestMinFloor_first,ElevatorTests){
-    const int minFloor = -2;
-    const int startingFloor = 5;
-    Elevator testElevator(startingFloor);
+    const int minFloor = -3;
+    const int maxFloor = -1;
+    Elevator testElevator(minFloor,maxFloor);
     const int expectedResult = minFloor;
     const int calculatedResult = testElevator.getMinFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
@@ -98,8 +98,8 @@ TEST(TestMinFloor_first,ElevatorTests){
 
 TEST(TestMinFloor_second,ElevatorTests){
     const int minFloor = 0;
-    const int startingFloor = 5;
-    Elevator testElevator(startingFloor);
+    const int maxFloor = 1;
+    Elevator testElevator(minFloor,maxFloor);
     const int expectedResult = minFloor;
     const int calculatedResult = testElevator.getMinFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
@@ -107,8 +107,8 @@ TEST(TestMinFloor_second,ElevatorTests){
 
 TEST(TestMinFloor_third,ElevatorTests){
     const int minFloor = 10;
-    const int startingFloor = 5;
-    Elevator testElevator(startingFloor);
+    const int maxFloor = 20;
+    Elevator testElevator(minFloor,maxFloor);
     const int expectedResult = minFloor;
     const int calculatedResult = testElevator.getMinFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
@@ -116,8 +116,8 @@ TEST(TestMinFloor_third,ElevatorTests){
 
 TEST(TestMaxFloor_first,ElevatorTests){
     const int maxFloor = -2;
-    const int startingFloor = 5;
-    Elevator testElevator(startingFloor);
+    const int minFloor = -4;
+    Elevator testElevator(minFloor,maxFloor);
     const int expectedResult = maxFloor;
     const int calculatedResult = testElevator.getMaxFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
@@ -125,8 +125,8 @@ TEST(TestMaxFloor_first,ElevatorTests){
 
 TEST(TestMaxFloor_second,ElevatorTests){
     const int maxFloor = 0;
-    const int startingFloor = 5;
-    Elevator testElevator(startingFloor);
+    const int minFloor = -4;
+    Elevator testElevator(minFloor,maxFloor);
     const int expectedResult = maxFloor;
     const int calculatedResult = testElevator.getMaxFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
@@ -134,8 +134,8 @@ TEST(TestMaxFloor_second,ElevatorTests){
 
 TEST(TestMaxFloor_third,ElevatorTests){
     const int maxFloor = 10;
-    const int startingFloor = 5;
-    Elevator testElevator(startingFloor);
+    const int minFloor = 6;
+    Elevator testElevator(minFloor,maxFloor);
     const int expectedResult = maxFloor;
     const int calculatedResult = testElevator.getMaxFloor();
     ASSERT_EQ(expectedResult,calculatedResult);
