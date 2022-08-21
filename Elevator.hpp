@@ -29,6 +29,7 @@ public:
     }
     int incrementFloor();
     int decrementFloor();
+    int setCurrentFloor(int floor);
     
     int getMinFloor();
     int getMaxFloor();
@@ -50,6 +51,13 @@ StateOfElevator Elevator::setDestination(int destination){
 
 StateOfElevator Elevator::getStatus(){
     return this->mState;
+}
+
+int Elevator::setCurrentFloor(int floor){
+    assert(floor <= mMaxFloor);
+    assert(floor >= mMinFloor);
+    this->mCurrentFloor = floor;
+    return this->mCurrentFloor;
 }
 
 int Elevator::getCurrentFloor(){
