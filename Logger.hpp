@@ -23,6 +23,7 @@ class Logger{
 
 void Logger::logMessage(std::string message){
     std::scoped_lock lockMessage(mlocker);
+    message += '\n';
     mloggerFile.open(mFileName,std::ios_base::app);
     mloggerFile.write(message.data(),message.size());
     mloggerFile.close();
