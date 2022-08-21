@@ -1,24 +1,17 @@
 #include <utility>
+#include <cassert>
+#include <tuple>
 
-class People{
-private:
-    unsigned int numberOfPeople;
-    int designatedFloor;
+struct People{
+    unsigned int mNumberOfPeople;
+    int mDesignatedFloor;
+    int mStartingFloor;
 public:
-    std::pair<decltype(numberOfPeople),decltype(designatedFloor)> getGroup();
-    decltype(numberOfPeople) getPeopleumber();
-    decltype(designatedFloor) getDestination();
+    explicit People(unsigned int numberOfPeople, int designatedFloor,int startingFloor){
+        assert(numberOfPeople > 0);
+        mNumberOfPeople = numberOfPeople;
+        mDesignatedFloor = designatedFloor;
+        mStartingFloor = startingFloor;
+    }
+    People(int numberOfPeople, int designatedFloor,int startingFloor) = delete;
 };
-
-
-std::pair<unsigned int,int> People::getGroup(){
-    return std::pair<unsigned int,int>(0,0);
-}
-
-unsigned int People::getPeopleumber(){
-    return 0;
-}
-
-int People::getDestination(){
-    return 1;    
-}
