@@ -13,7 +13,7 @@ unittest: UnitTests/ElevatorTests.cpp
 	@./TEST_ELEVATOR_FACTORY
 
 clean:
-	@rm -f TEST_ELEVATOR TEST_ELEVATOR_COR MAIN
+	@rm -f TEST_ELEVATOR TEST_ELEVATOR_COR MAIN TEST_ELEVATOR_FACTORY
 
 clearlogs:
 	@rm -f Logs.txt
