@@ -21,18 +21,9 @@ public:
         bool number = toCompare.mNumberOfPeople == this->mNumberOfPeople;
         return (destination && start && number);
     }
-    People(const People& toMove){
-        mNumberOfPeople = toMove.mNumberOfPeople;
-        mStartingFloor = toMove.mStartingFloor;
-        mDesignatedFloor = toMove.mDesignatedFloor;
-    }
-    People(){
-        mNumberOfPeople = 0;
-        mStartingFloor = 0;
-        mDesignatedFloor = 0;
-    }
-    ~People(){
-    }
+    People(const People& toMove) = default;
+    People() = default;
+    ~People() = default;
 };
 
 #endif
