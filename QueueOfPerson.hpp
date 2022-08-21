@@ -1,32 +1,42 @@
+#ifndef QUEUE_OF_PERSON_HPP
+#define QUEUE_OF_PERSON_HPP
 #include <utility>
-
+#include "People.hpp"
+#include <queue>
 
 class QueueOfPersons{
+private:
+    std::queue<People> personQueue;
 
 public:
-    int push(int numberOfPeople, int destinatedFloor);
+    int push(People groupOfPeople);
     int size();
-    std::pair<int,int> front();
+    People front();
     bool empty();
-
-
-private:
-
+    int Pop();
 
 };
 
-int QueueOfPersons::push(int numberOfPeople, int destinatedFloor){
-    return 1;
+int QueueOfPersons::push(People groupOfPeople){
+    personQueue.push(groupOfPeople);
+    return this->size();
 }
 
 int QueueOfPersons::size(){
-    return 1;
+    return personQueue.size();
 }
 
 bool QueueOfPersons::empty(){
-    return true;
+    return personQueue.empty();
 }
 
-std::pair<int,int> QueueOfPersons::front(){
-    return std::make_pair<int,int>(0,0);
+People QueueOfPersons::front(){
+    return personQueue.front();
 }
+
+int QueueOfPersons::Pop(){
+    personQueue.pop();
+    return this->size();
+}
+
+#endif
