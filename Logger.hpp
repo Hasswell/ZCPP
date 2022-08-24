@@ -13,22 +13,26 @@ class Logger{
 
     }
     void logMessage(std::string message);
-    std::string CurrenntTime()const;
+    std::string CurrenntTime();
 
     private:
+        std::string removeNextLineCharacter(std::string stringToFix);
         std::mutex mlocker;
         std::ofstream mloggerFile;
         std::string mFileName;
 
 };
 
-std::string Logger::CurrenntTime()const{
+std::string Logger::removeNextLineCharacter(std::string stringToFix){
+    *(stringToFix.end()-1) = ' ';
+    return stringToFix;
+    
+}
+
+std::string Logger::CurrenntTime(){
     time_t now = 0;
     char* timeNow = ctime(&now);
-    std::string convertedToString(timeNow);
-    *(convertedToString.end()-1) = ' '; //removing next line character
-    return convertedToString;
-
+    return removeNextLineCharacter(std::string(timeNow));
 }
 
 void Logger::logMessage(std::string message){
