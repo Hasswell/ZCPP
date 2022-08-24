@@ -27,6 +27,9 @@ public:
         mMaxFloor = maxFloor;
         mCurrentFloor = (mMinFloor + mMaxFloor) / 2;
     }
+    bool operator==(const Elevator& toCompare)const{
+        return  (toCompare.getCurrentFloor() == mCurrentFloor);
+    }
     int incrementFloor();
     int decrementFloor();
     int setCurrentFloor(int floor);
@@ -37,7 +40,7 @@ public:
     //final methods for the interface:
     StateOfElevator getStatus();
     StateOfElevator setDestination(int destination);
-    int getCurrentFloor();
+    int getCurrentFloor()const;
 private:
     //private methods for the checking
     
@@ -60,7 +63,7 @@ int Elevator::setCurrentFloor(int floor){
     return this->mCurrentFloor;
 }
 
-int Elevator::getCurrentFloor(){
+int Elevator::getCurrentFloor()const{
     return this->mCurrentFloor;
 }
 
