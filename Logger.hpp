@@ -16,6 +16,7 @@ class Logger{
     std::string CurrenntTime();
 
     private:
+        char goToTheNextLine();
         std::string removeNextLineCharacter(std::string stringToFix);
         std::mutex mlocker;
         std::ofstream mloggerFile;
@@ -26,23 +27,23 @@ class Logger{
 std::string Logger::removeNextLineCharacter(std::string stringToFix){
     *(stringToFix.end()-1) = ' ';
     return stringToFix;
-    
 }
 
 std::string Logger::CurrenntTime(){
-    time_t now = 0;
+    time_t now = time(NULL);
     char* timeNow = ctime(&now);
     return removeNextLineCharacter(std::string(timeNow));
+}
+char Logger::goToTheNextLine(){
+    return '\n';
 }
 
 void Logger::logMessage(std::string message){
     std::scoped_lock lockMessage(mlocker);
-
-    //getting the time:
-
-
-    message += '\n';
+    std::string finalMessage = CurrenntTime() + message + goToTheNextLine();
     mloggerFile.open(mFileName,std::ios_base::app);
-    mloggerFile.write(message.data(),message.size());
+    mloggerFile.write(finalMessage.data(),finalMessage.size());
     mloggerFile.close();
 }
+
+
