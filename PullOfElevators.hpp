@@ -21,14 +21,14 @@ public:
         pullOfElevators[numberOfElevator].setCurrentFloor(startingFloor);
     }
     StateOfElevator passPeopleToElevator(People group);
-    Elevator& chooseElevator(int destination);
+    auto chooseElevator(int destination);
     Elevator& selectElevator(int position){
         assert(position < pullOfElevators.size());
         assert(position >= 0);
         return pullOfElevators[position];
     }
 
-    int calculateDistance(Elevator& elevator,int destination);
+    int calculateDistance(Elevator& elevator,int currentPosition);
 
 
 private:
@@ -37,24 +37,25 @@ private:
 };
 
 
-int PullOfElevators::calculateDistance(Elevator& elevator, int destination){
-    return abs(destination - elevator.getCurrentFloor()); 
+int PullOfElevators::calculateDistance(Elevator& elevator, int currentPosition){
+    return abs(currentPosition - elevator.getCurrentFloor()); 
 }
 
-Elevator& PullOfElevators::chooseElevator(int destination){
+auto PullOfElevators::chooseElevator(int currentFloor){
     std::vector<int> distanceVector;
-    for(auto& x : pullOfElevators){
-        distanceVector.push_back(calculateDistance(x,destination));
+    for(auto& elevator : pullOfElevators){
+        distanceVector.push_back(calculateDistance(elevator,currentFloor));
     }
 
     auto position = std::min_element(distanceVector.begin(),distanceVector.end());
-    return *(pullOfElevators.begin() + std::distance(distanceVector.begin(),position));
+    return (pullOfElevators.begin() + std::distance(distanceVector.begin(),position));
 }
 
-StateOfElevator passPeopleToElevator(People group){
+StateOfElevator PullOfElevators::passPeopleToElevator(People group){
 
-
-
+    //remember -> returns iterator!
+    auto selectedElevator = chooseElevator(group.mStartingFloor);
+    selectedElevator->setDestination(group.mDesignatedFloor);
     return StateOfElevator::isFree;
 }
 

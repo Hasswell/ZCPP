@@ -1,6 +1,7 @@
 #include "../Elevator.hpp"
 #include "../ElevatorCOR.hpp"
 #include "../PullOfElevators.hpp"
+#include "../People.hpp"
 
 
 TEST(DistanceCalculation_first,PullOfElevatorsTest){
@@ -70,7 +71,7 @@ TEST(ChooseElevator_first,PullOfElevatorsTest){
     testPullOfElevators.setFloorForElevator(2,7);
     testPullOfElevators.setFloorForElevator(3,-8);
     auto returnedElevator = testPullOfElevators.chooseElevator(destinationFloor);
-    ASSERT_EQ(returnedElevator,testPullOfElevators.selectElevator(1));
+    ASSERT_EQ(*returnedElevator,testPullOfElevators.selectElevator(1));
 }
 
 TEST(ChooseElevator_second,PullOfElevatorsTest){
@@ -78,13 +79,30 @@ TEST(ChooseElevator_second,PullOfElevatorsTest){
     const int minFloor = -10;
     const int numberOfElevators = 4;
     PullOfElevators testPullOfElevators(numberOfElevators,minFloor,maxFloor);
-    int destinationFloor = -5;
+    int currentFloor = -5;
     testPullOfElevators.setFloorForElevator(0,-3);
     testPullOfElevators.setFloorForElevator(1,4);
     testPullOfElevators.setFloorForElevator(2,7);
     testPullOfElevators.setFloorForElevator(3,-8);
-    auto returnedElevator = testPullOfElevators.chooseElevator(destinationFloor);
-    ASSERT_EQ(returnedElevator,testPullOfElevators.selectElevator(0));
+    auto returnedElevator = testPullOfElevators.chooseElevator(currentFloor);
+    ASSERT_EQ(*returnedElevator,testPullOfElevators.selectElevator(0));
+}
+
+TEST(passPeopleToElevator_first,PullOfElevatorsTest){
+    unsigned int numberOfPeople = 5;
+    People testGroup(numberOfPeople,6,5);
+    
+    const int maxFloor = 10;
+    const int minFloor = -10;
+    const int numberOfElevators = 4;
+    PullOfElevators testPullOfElevators(numberOfElevators,minFloor,maxFloor);
+    testPullOfElevators.setFloorForElevator(0,-3);
+    testPullOfElevators.setFloorForElevator(1,4);
+    testPullOfElevators.setFloorForElevator(2,7);
+    testPullOfElevators.setFloorForElevator(3,-8);
+    auto returnedElevator = testPullOfElevators.chooseElevator(testGroup.mStartingFloor);
+    testPullOfElevators.passPeopleToElevator(testGroup);
+    ASSERT_EQ(returnedElevator->getCurrentFloor(),testGroup.mDesignatedFloor);
 }
 
 
