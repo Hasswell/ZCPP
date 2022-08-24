@@ -13,6 +13,11 @@ public:
             pullOfElevators.push_back(Elevator(minFloor,maxFloor));
         }
     }
+    void setAlarmForElevators(){
+        for(auto& elevator : pullOfElevators){
+            elevator.setDestination(0);
+        }
+    }
 
     void setFloorForElevator(int numberOfElevator,int startingFloor){
         assert(numberOfElevator < pullOfElevators.size());

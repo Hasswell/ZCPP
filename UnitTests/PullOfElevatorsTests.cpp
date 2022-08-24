@@ -106,6 +106,26 @@ TEST(passPeopleToElevator_first,PullOfElevatorsTest){
 }
 
 
+TEST(alarmForElevators,PullOfElevatorsTest){
+    unsigned int numberOfPeople = 5;
+    People testGroup(numberOfPeople,6,5);
+    
+    const int maxFloor = 10;
+    const int minFloor = -10;
+    const int numberOfElevators = 4;
+    PullOfElevators testPullOfElevators(numberOfElevators,minFloor,maxFloor);
+    testPullOfElevators.setFloorForElevator(0,-3);
+    testPullOfElevators.setFloorForElevator(1,4);
+    testPullOfElevators.setFloorForElevator(2,7);
+    testPullOfElevators.setFloorForElevator(3,-8);
+    testPullOfElevators.setAlarmForElevators();
+    const int alarmFloor = 0;
+    for(int i = 0; i < numberOfElevators;i++){
+        ASSERT_EQ(testPullOfElevators.selectElevator(i).getCurrentFloor() ,alarmFloor);
+    }
+    
+}
+
 int main(int argc, char *argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
