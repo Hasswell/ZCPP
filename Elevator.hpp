@@ -4,6 +4,7 @@
 #include <cassert>
 #include <ctime>
 #include <random>
+#include <iostream>
 
 enum StateOfElevator{
     isFree,
@@ -47,8 +48,15 @@ private:
 };
 
 StateOfElevator Elevator::setDestination(int destination){
+
     this->mState = StateOfElevator::isMoving;
-    mCurrentFloor = destination;
+    while(destination != mCurrentFloor){
+        if(destination > mCurrentFloor){
+            incrementFloor();
+        }else{
+            decrementFloor();
+        }
+    }
     return StateOfElevator::isFree;
 }
 
@@ -77,17 +85,11 @@ int Elevator::getMinFloor(){
 }
 
 int Elevator::incrementFloor(){
-    if(this->mCurrentFloor + 1 > mMaxFloor){
-        return getCurrentFloor();
-    }
     this->mCurrentFloor++;
     return getCurrentFloor();
 }
 
 int Elevator::decrementFloor(){
-    if(this->mCurrentFloor -1 < mMinFloor){
-        return getCurrentFloor();
-    }
     this->mCurrentFloor--;
     return getCurrentFloor();
 }
