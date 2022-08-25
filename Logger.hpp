@@ -1,3 +1,6 @@
+#ifndef LOGGER_HPP
+#define LOGGER_HPP
+
 #include <mutex>
 #include <thread>
 #include <fstream>
@@ -47,3 +50,4 @@ void Logger::logMessage(std::string message){
 }
 
 
+#endif

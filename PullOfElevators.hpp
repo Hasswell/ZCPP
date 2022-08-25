@@ -15,6 +15,7 @@ public:
             pullOfElevators.push_back(factoryForElevators.create(minFloor,maxFloor,ids[i]));
         }
     }
+    PullOfElevators(const PullOfElevators& toCopy) = default;
     void setAlarmForElevators(){
         for(auto& elevator : pullOfElevators){
             elevator.setDestination(0);

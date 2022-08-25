@@ -3,7 +3,7 @@
 #include <iostream>
 #include "SystemApplication.hpp"
 
-Logger constLogger("Logs.txt");
+// Logger constLogger("Logs.txt");
 
 int main(){
 

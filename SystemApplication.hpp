@@ -8,8 +8,7 @@
 
 class SystemApplication{
 public:
-    SystemApplication(QueueOfPersons passangers, PullOfElevators elevators){
-        mQueueOfPassangers = passangers;
+    SystemApplication(QueueOfPersons passangers, PullOfElevators elevators) : mElevatorSystems(elevators){
         mElevatorSystems = elevators;
     }
     void RunApplication(){
