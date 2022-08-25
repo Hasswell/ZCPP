@@ -8,9 +8,9 @@
 
 class PullOfElevators{
 public:
-    PullOfElevators(int numberOfElevators,int minFloor, int maxFloor){
+    PullOfElevators(int numberOfElevators,int minFloor, int maxFloor,std::vector<std::string> ids){
         for(int i = 0; i < numberOfElevators;i++){
-            pullOfElevators.push_back(Elevator(minFloor,maxFloor));
+            pullOfElevators.push_back(Elevator(minFloor,maxFloor,ids[i]));
         }
     }
     void setAlarmForElevators(){

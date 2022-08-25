@@ -20,13 +20,15 @@ private:
     StateOfElevator mState;
     int mMinFloor;
     int mMaxFloor;
+    std::string mIdElevator;
 public:
-    Elevator(int minFloor, int maxFloor){
+    Elevator(int minFloor, int maxFloor, std::string id){
         assert(maxFloor > minFloor);
         mState = StateOfElevator::isFree;
         mMinFloor = minFloor;
         mMaxFloor = maxFloor;
         mCurrentFloor = (mMinFloor + mMaxFloor) / 2;
+        mIdElevator = id;
     }
     bool operator==(const Elevator& toCompare)const{
         return  (toCompare.getCurrentFloor() == mCurrentFloor);
@@ -37,6 +39,7 @@ public:
     
     int getMinFloor();
     int getMaxFloor();
+    std::string getId();
 
     //final methods for the interface:
     StateOfElevator getStatus();
@@ -94,5 +97,8 @@ int Elevator::decrementFloor(){
     return getCurrentFloor();
 }
 
+std::string Elevator::getId(){
+    return this->mIdElevator;
+}
 
 #endif

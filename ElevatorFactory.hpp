@@ -4,11 +4,11 @@
 
 class ElevatorFactory{
     public:
-        Elevator create(int minFloor, int maxFloor);
+        Elevator create(int minFloor, int maxFloor,std::string id);
 };
 
-Elevator ElevatorFactory::create(int minFloor, int maxFloor){
-    return Elevator(minFloor,maxFloor);
+Elevator ElevatorFactory::create(int minFloor, int maxFloor,std::string id){
+    return Elevator(minFloor,maxFloor,id);
 }
 
 
