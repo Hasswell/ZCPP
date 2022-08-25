@@ -2,6 +2,7 @@
 #define PULL_OF_ELEVATORS_HPP
 #include <vector>
 #include "Elevator.hpp"
+#include "ElevatorFactory.hpp"
 #include "People.hpp"
 #include "algorithm"
 #include <cassert>
@@ -9,8 +10,9 @@
 class PullOfElevators{
 public:
     PullOfElevators(int numberOfElevators,int minFloor, int maxFloor,std::vector<std::string> ids){
+        ElevatorFactory factoryForElevators;
         for(int i = 0; i < numberOfElevators;i++){
-            pullOfElevators.push_back(Elevator(minFloor,maxFloor,ids[i]));
+            pullOfElevators.push_back(factoryForElevators.create(minFloor,maxFloor,ids[i]));
         }
     }
     void setAlarmForElevators(){
