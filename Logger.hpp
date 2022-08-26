@@ -54,27 +54,9 @@ void Logger<T>::logMessage(T message){
     mloggerFile.close();
 }
 
-std::string removeNextLineCharacter(std::string stringToFix){
-    *(stringToFix.end()-1) = ' ';
-    return stringToFix;
-}
-
-std::string CurrenntTime(){
-    time_t now = time(NULL);
-    char* timeNow = ctime(&now);
-    return removeNextLineCharacter(std::string(timeNow));
-}
-
-char goToTheNextLine(){
-    return '\n';
-}
-
 void logMessage(std::string message){
-    std::ofstream mloggerFile;
-    std::string finalMessage = CurrenntTime() + message + goToTheNextLine();
-    mloggerFile.open("Logs_temp.txt",std::ios_base::app);
-    mloggerFile.write(finalMessage.data(),finalMessage.size());
-    mloggerFile.close();
+    static Logger<std::string> logger("Logs.txt");
+    logger.logMessage(message);
 }
 
 
