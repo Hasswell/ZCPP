@@ -6,6 +6,7 @@
 #include "People.hpp"
 #include "algorithm"
 #include <cassert>
+#include <algorithm>
 
 class PullOfElevators{
 public:
@@ -51,9 +52,10 @@ int PullOfElevators::calculateDistance(Elevator& elevator, int currentPosition){
 
 auto PullOfElevators::chooseElevator(int currentFloor){
     std::vector<int> distanceVector;
-    for(auto& elevator : mPullOfElevators){
-        distanceVector.push_back(calculateDistance(elevator,currentFloor));
-    }
+    std::transform(mPullOfElevators.begin(),mPullOfElevators.end(),std::back_inserter(distanceVector),[&](Elevator& elevator){
+        return calculateDistance(elevator,currentFloor);
+    });
+
     auto position = std::min_element(distanceVector.begin(),distanceVector.end());
     return (mPullOfElevators.begin() + std::distance(distanceVector.begin(),position));
 }
