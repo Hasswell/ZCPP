@@ -51,12 +51,9 @@ int PullOfElevators::calculateDistance(Elevator& elevator, int currentPosition){
 
 auto PullOfElevators::chooseElevator(int currentFloor){
     std::vector<int> distanceVector;
-    std::cout << "CurrentFloor floor: " << currentFloor << std::endl;
     for(auto& elevator : pullOfElevators){
         distanceVector.push_back(calculateDistance(elevator,currentFloor));
-        std::cout << calculateDistance(elevator,currentFloor) << ", ";
     }
-        std::cout << "\n";
     auto position = std::min_element(distanceVector.begin(),distanceVector.end());
     return (pullOfElevators.begin() + std::distance(distanceVector.begin(),position));
 }

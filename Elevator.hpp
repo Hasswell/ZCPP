@@ -98,7 +98,6 @@ StateOfElevator Elevator::setDestination(int destination){
 }
 
 StateOfElevator Elevator::getStatus(){
-    logMessage(localMessage);
     return this->mState;
 }
 
