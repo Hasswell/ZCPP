@@ -34,6 +34,12 @@ public:
     void addStartingFloor(int startingFloor){
         currentGroup.mStartingFloor = startingFloor;
     }
+    int putFloorToElevator(int numberOfElevator){
+        return mElevatorSystems.selectElevator(numberOfElevator).getCurrentFloor();
+    }
+    std::string putDescriptionForTheElevator(int numberOfElevator){
+        mElevatorSystems.selectElevator(numberOfElevator).getId();
+    }
 
 private:
     QueueOfPersons mQueueOfPassangers;
