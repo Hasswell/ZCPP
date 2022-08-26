@@ -10,38 +10,43 @@
 
 
 //one global object of Logger
+template<typename T>
 class Logger{
     public:
-    Logger(const std::string fileName) : mFileName(fileName.c_str()){
+    Logger(const T fileName) : mFileName(fileName.c_str()){
 
     }
-    void logMessage(std::string message);
-    std::string CurrenntTime();
+    void logMessage(T message);
+    T CurrenntTime();
 
     private:
         char goToTheNextLine();
-        std::string removeNextLineCharacter(std::string stringToFix);
+        T removeNextLineCharacter(T stringToFix);
         std::mutex mlocker;
         std::ofstream mloggerFile;
-        std::string mFileName;
+        T mFileName;
 
 };
 
-std::string Logger::removeNextLineCharacter(std::string stringToFix){
+template<typename T>
+T Logger<T>::removeNextLineCharacter(T stringToFix){
     *(stringToFix.end()-1) = ' ';
     return stringToFix;
 }
-
-std::string Logger::CurrenntTime(){
+template<typename T>
+T Logger<T>::CurrenntTime(){
     time_t now = time(NULL);
     char* timeNow = ctime(&now);
     return removeNextLineCharacter(std::string(timeNow));
 }
-char Logger::goToTheNextLine(){
+
+template<typename T>
+char Logger<T>::goToTheNextLine(){
     return '\n';
 }
 
-void Logger::logMessage(std::string message){
+template<typename T>
+void Logger<T>::logMessage(T message){
     std::scoped_lock lockMessage(mlocker);
     std::string finalMessage = CurrenntTime() + message + goToTheNextLine();
     mloggerFile.open(mFileName,std::ios_base::app);
