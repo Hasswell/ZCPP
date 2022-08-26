@@ -19,7 +19,7 @@ public:
         }
     }
     SystemApplication(unsigned int numberOfGroups,std::vector<std::string> elevators, int minFloor, int maxFloor)
-        : mElevatorSystems(PullOfElevators(elevators.size(),minFloor,maxFloor,elevators)){
+        : mElevatorSystems(PullOfElevators(minFloor,maxFloor,elevators)){
 
         //random Number Of People
         PeopleFactory peopleFactory;
