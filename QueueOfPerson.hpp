@@ -6,7 +6,7 @@
 
 class QueueOfPersons{
 private:
-    std::queue<People> personQueue;
+    std::queue<People> mPersonQueue;
 
 public:
     int push(People groupOfPeople);
@@ -18,24 +18,24 @@ public:
 };
 
 int QueueOfPersons::push(People groupOfPeople){
-    personQueue.push(groupOfPeople);
+    mPersonQueue.push(groupOfPeople);
     return this->size();
 }
 
 int QueueOfPersons::size(){
-    return personQueue.size();
+    return mPersonQueue.size();
 }
 
 bool QueueOfPersons::empty(){
-    return personQueue.empty();
+    return mPersonQueue.empty();
 }
 
 People QueueOfPersons::front(){
-    return personQueue.front();
+    return mPersonQueue.front();
 }
 
 int QueueOfPersons::Pop(){
-    personQueue.pop();
+    mPersonQueue.pop();
     return this->size();
 }
 
