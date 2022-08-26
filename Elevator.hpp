@@ -98,7 +98,6 @@ StateOfElevator Elevator::setDestination(int destination){
 }
 
 StateOfElevator Elevator::getStatus(){
-    std::string localMessage = "State of elevator number: " + this->mIdElevator + " is " + std::to_string(this->mState);
     logMessage(localMessage);
     return this->mState;
 }
