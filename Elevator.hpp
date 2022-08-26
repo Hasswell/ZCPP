@@ -29,6 +29,10 @@ public:
         mMaxFloor = maxFloor;
         mCurrentFloor = (mMinFloor + mMaxFloor) / 2;
         mIdElevator = id;
+        std::string localMessage = "Elevator is created. Parameters: " + this->mIdElevator +
+        ", max floor: " + std::to_string(this->getMinFloor()) +
+        ", max floor: " + std::to_string(this->getMaxFloor()) + 
+        ", current floor: " + std::to_string(this->getCurrentFloor()); 
     }
     bool operator==(const Elevator& toCompare)const{
         return  (toCompare.getCurrentFloor() == mCurrentFloor);
@@ -52,6 +56,8 @@ private:
 
 StateOfElevator Elevator::setDestination(int destination){
 
+    std::string localMessage = "Elevator number: " + this->mIdElevator + " is moving to the " + std::to_string(destination) + " floor";
+
     this->mState = StateOfElevator::isMoving;
     while(destination != mCurrentFloor){
         if(destination > mCurrentFloor){
@@ -60,10 +66,14 @@ StateOfElevator Elevator::setDestination(int destination){
             decrementFloor();
         }
     }
+
+    localMessage = "Current floor of the " + this->mIdElevator + " is: " + std::to_string(this->getCurrentFloor());
+    
     return StateOfElevator::isFree;
 }
 
 StateOfElevator Elevator::getStatus(){
+    std::string localMessage = "State of elevator number: " + this->mIdElevator + " is " + std::to_string(this->mState);
     return this->mState;
 }
 
@@ -89,11 +99,13 @@ int Elevator::getMinFloor(){
 
 int Elevator::incrementFloor(){
     this->mCurrentFloor++;
+    std::string localMessage = "Elevator number: " + this->mIdElevator + " is  going up, current floor is: " + std::to_string(this->getCurrentFloor());
     return getCurrentFloor();
 }
 
 int Elevator::decrementFloor(){
     this->mCurrentFloor--;
+    std::string localMessage = "Elevator number: " + this->mIdElevator + " is  going down, current floor is: " + std::to_string(this->getCurrentFloor());
     return getCurrentFloor();
 }
 
