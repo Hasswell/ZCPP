@@ -5,7 +5,6 @@
 #include <ctime>
 #include <random>
 #include <iostream>
-#include "ElevatorCOR.hpp"
 #include "Logger.hpp"
 
 enum StateOfElevator{

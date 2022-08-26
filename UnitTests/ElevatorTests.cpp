@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include "../Elevator.hpp"
-#include "../ElevatorCOR.hpp"
 #include <iostream>
 
 class Elevator;

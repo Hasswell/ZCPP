@@ -1,5 +1,4 @@
 #include "../Elevator.hpp"
-#include "../ElevatorCOR.hpp"
 #include "../PullOfElevators.hpp"
 #include "../People.hpp"
 #include "gtest/gtest.h"
