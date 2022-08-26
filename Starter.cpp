@@ -12,7 +12,7 @@ int main(){
     std::vector<std::string> idsForElevators = {"0xFFAA","0xDDCC","0xCCDD","0xAABB"};
     const int minFloor = -10;
     const int maxFloor = 10;
-    unsigned int numberOfGroups = 7;
+    unsigned int numberOfGroups = 12;
 
     SystemApplication systemForElevators(numberOfGroups,idsForElevators,minFloor,maxFloor);
     systemForElevators.RunApplication();
