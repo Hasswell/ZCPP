@@ -2,6 +2,7 @@
 #include "QueueOfPerson.hpp"
 #include <iostream>
 #include "SystemApplication.hpp"
+#include "PeopleFactory.hpp"
 
 // Logger constLogger("Logs.txt");
 
@@ -9,19 +10,12 @@ int main(){
 
 
     std::vector<std::string> idsForElevators = {"0xFFAA","0xDDCC","0xCCDD","0xAABB"};
-    const int maxFloor = 10;
     const int minFloor = -10;
-    
-    PullOfElevators elevators(4,minFloor,maxFloor,idsForElevators);
-    QueueOfPersons queueOfPassangers;
-    queueOfPassangers.push(People((unsigned int)5,5,0));
-    queueOfPassangers.push(People((unsigned int)3,-3,2));
-    queueOfPassangers.push(People((unsigned int)2,8,-3));
-    queueOfPassangers.push(People((unsigned int)7,7,4));
+    const int maxFloor = 10;
+    unsigned int numberOfGroups = 7;
 
-    SystemApplication systemForElevators(queueOfPassangers,elevators);
+    SystemApplication systemForElevators(numberOfGroups,idsForElevators,minFloor,maxFloor);
     systemForElevators.RunApplication();
-  
 
     return 0;
 }

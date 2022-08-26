@@ -4,6 +4,7 @@
 #include "Logger.hpp"
 #include "ElevatorFactory.hpp"
 #include "QueueOfPerson.hpp"
+#include "PeopleFactory.hpp"
 
 
 class SystemApplication{
@@ -14,6 +15,15 @@ public:
         while(!mQueueOfPassangers.empty()){
             mElevatorSystems.passPeopleToElevator(mQueueOfPassangers.front());
             mQueueOfPassangers.Pop();
+        }
+    }
+    SystemApplication(unsigned int numberOfGroups,std::vector<std::string> elevators, int minFloor, int maxFloor)
+        : mElevatorSystems(PullOfElevators(elevators.size(),minFloor,maxFloor,elevators)){
+
+        //random Number Of People
+        PeopleFactory peopleFactory;
+        for(int i = 0;i<numberOfGroups;i++){
+            mQueueOfPassangers.push(peopleFactory.createRandom(minFloor,maxFloor));
         }
     }
     void setAlarmForTheBuilding(){
