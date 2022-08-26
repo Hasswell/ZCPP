@@ -2,6 +2,7 @@
 #define PEOPLE_HPP
 
 #include <cassert>
+#include "Logger.hpp"
 
 struct People{
     unsigned int mNumberOfPeople;
@@ -13,6 +14,10 @@ public:
         mNumberOfPeople = numberOfPeople;
         mDesignatedFloor = designatedFloor;
         mStartingFloor = startingFloor;
+        std::string localMessage = "Group of people has been created, number of people: "\
+        + std::to_string(mNumberOfPeople) + ", destination: "
+        + std::to_string(mDesignatedFloor) + ", starting floor: " + std::to_string(mStartingFloor);
+        logMessage(localMessage);
     }
     People(int numberOfPeople, int designatedFloor,int startingFloor) = delete;
     bool operator==(const People& toCompare)const {
