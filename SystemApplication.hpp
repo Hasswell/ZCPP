@@ -8,11 +8,12 @@
 
 class SystemApplication{
 public:
-    SystemApplication(QueueOfPersons passangers, PullOfElevators elevators) : mElevatorSystems(elevators){
-        mElevatorSystems = elevators;
+    SystemApplication(QueueOfPersons passangers, PullOfElevators elevators) : mElevatorSystems(elevators), mQueueOfPassangers(passangers){
     }
     void RunApplication(){
         while(!mQueueOfPassangers.empty()){
+            static int counter = 0;
+            std::cout << "Number of evaluations: " << mQueueOfPassangers.size() << std::endl;
             mElevatorSystems.passPeopleToElevator(mQueueOfPassangers.front());
             mQueueOfPassangers.Pop();
         }

@@ -7,15 +7,6 @@
 
 int main(){
 
-    // const std::string fileName("Logs.txt");
-    // Logger myLog(fileName);
-
-    // myLog.logMessage("Grzegorlaw");
-    // myLog.logMessage("AGH");
-
-    // QueueOfPersons testQueue;
-
-    // std::cout << myLog.CurrenntTime() + "Kacper" << std::endl;
 
     std::vector<std::string> idsForElevators = {"0xFFAA","0xDDCC","0xCCDD","0xAABB"};
     const int maxFloor = 10;
@@ -30,14 +21,7 @@ int main(){
 
     SystemApplication systemForElevators(queueOfPassangers,elevators);
     systemForElevators.RunApplication();
-
-
-
-    //creating group of people
-
-    
-
-    
+  
 
     return 0;
 }
