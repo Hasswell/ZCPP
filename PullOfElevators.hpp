@@ -9,9 +9,9 @@
 
 class PullOfElevators{
 public:
-    PullOfElevators(int numberOfElevators,int minFloor, int maxFloor,std::vector<std::string> ids){
+    PullOfElevators(int minFloor, int maxFloor,std::vector<std::string> ids){
         ElevatorFactory factoryForElevators;
-        for(int i = 0; i < numberOfElevators;i++){
+        for(int i = 0; i < ids.size();i++){
             pullOfElevators.push_back(factoryForElevators.create(minFloor,maxFloor,ids[i]));
         }
     }
