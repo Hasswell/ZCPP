@@ -15,7 +15,7 @@ int main(){
     PullOfElevators elevators(4,minFloor,maxFloor,idsForElevators);
     QueueOfPersons queueOfPassangers;
     queueOfPassangers.push(People((unsigned int)5,5,0));
-    queueOfPassangers.push(People((unsigned int)3,-3,7));
+    queueOfPassangers.push(People((unsigned int)3,-3,2));
     queueOfPassangers.push(People((unsigned int)2,8,-3));
     queueOfPassangers.push(People((unsigned int)7,7,4));
 
