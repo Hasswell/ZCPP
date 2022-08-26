@@ -16,6 +16,7 @@ int main(){
 
     SystemApplication systemForElevators(numberOfGroups,idsForElevators,minFloor,maxFloor);
     systemForElevators.RunApplication();
+    systemForElevators.setAlarmForTheBuilding();
 
     return 0;
 }

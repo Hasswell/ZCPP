@@ -5,6 +5,7 @@
 #include "ElevatorFactory.hpp"
 #include "QueueOfPerson.hpp"
 #include "PeopleFactory.hpp"
+#include "Logger.hpp"
 
 
 class SystemApplication{
@@ -27,6 +28,8 @@ public:
         }
     }
     void setAlarmForTheBuilding(){
+        std::string localMessage = "The alarm for the building has been announced!";
+        logMessage(localMessage);
         mElevatorSystems.setAlarmForElevators();
     }
     void addGroupdOfPeople(){
