@@ -38,7 +38,7 @@ public:
         return mElevatorSystems.selectElevator(numberOfElevator).getCurrentFloor();
     }
     std::string putDescriptionForTheElevator(int numberOfElevator){
-        mElevatorSystems.selectElevator(numberOfElevator).getId();
+        return mElevatorSystems.selectElevator(numberOfElevator).getId();
     }
 
 private:
