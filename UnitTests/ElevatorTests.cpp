@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 #include "../Elevator.hpp"
+#include "../ElevatorCOR.hpp"
 #include <iostream>
+
+class Elevator;
 
 TEST(TestIncrementFloor_first,ElevatorTests){
     const int minFloor = -3;

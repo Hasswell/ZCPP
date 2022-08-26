@@ -5,6 +5,7 @@
 #include <ctime>
 #include <random>
 #include <iostream>
+#include "ElevatorCOR.hpp"
 
 enum StateOfElevator{
     isFree,
@@ -12,6 +13,7 @@ enum StateOfElevator{
     isBlocked,
     isMoving
 };
+
 
 class Elevator{
 
@@ -54,6 +56,12 @@ private:
     
 };
 
+static void CheckElevatorParameters(Elevator& testedElevator){
+    assert(testedElevator.getCurrentFloor() >= testedElevator.getMinFloor());
+    assert(testedElevator.getCurrentFloor() <= testedElevator.getMaxFloor());
+    assert(testedElevator.getStatus() != StateOfElevator::isBlocked);
+    assert(testedElevator.getStatus() != StateOfElevator::isBusy);
+}
 StateOfElevator Elevator::setDestination(int destination){
 
     std::string localMessage = "Elevator number: " + this->mIdElevator + " is moving to the " + std::to_string(destination) + " floor";
@@ -78,9 +86,8 @@ StateOfElevator Elevator::getStatus(){
 }
 
 int Elevator::setCurrentFloor(int floor){
-    assert(floor <= mMaxFloor);
-    assert(floor >= mMinFloor);
     this->mCurrentFloor = floor;
+    CheckElevatorParameters(*this);
     return this->mCurrentFloor;
 }
 
@@ -99,12 +106,14 @@ int Elevator::getMinFloor(){
 
 int Elevator::incrementFloor(){
     this->mCurrentFloor++;
+    CheckElevatorParameters(*this);
     std::string localMessage = "Elevator number: " + this->mIdElevator + " is  going up, current floor is: " + std::to_string(this->getCurrentFloor());
     return getCurrentFloor();
 }
 
 int Elevator::decrementFloor(){
     this->mCurrentFloor--;
+    CheckElevatorParameters(*this);
     std::string localMessage = "Elevator number: " + this->mIdElevator + " is  going down, current floor is: " + std::to_string(this->getCurrentFloor());
     return getCurrentFloor();
 }
