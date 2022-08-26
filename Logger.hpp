@@ -17,11 +17,12 @@ class Logger{
 
     }
     void logMessage(T message);
-    T CurrenntTime();
+    
 
     private:
         char goToTheNextLine();
         T removeNextLineCharacter(T stringToFix);
+        T CurrenntTime();
         std::mutex mlocker;
         std::ofstream mloggerFile;
         T mFileName;
