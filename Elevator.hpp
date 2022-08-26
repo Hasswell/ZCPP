@@ -41,7 +41,7 @@ public:
         logMessage(localMessage);
     }
     ~Elevator(){
-         std::string localMessage = "The elevator: " + this->getId() + " is at " + std::to_string(this->getCurrentFloor()) + " and transported "
+         std::string localMessage = "The elevator: " + this->getId() + " is at " + std::to_string(this->getCurrentFloor()) + " floor and transported "
          + std::to_string(this->mNumberOfPeopleTransported) + " people";
         logMessage(localMessage);
     }
