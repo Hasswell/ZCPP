@@ -1,6 +1,6 @@
 #ifndef ELEVATOR_FACTORY_HPP
 #define ELEVATOR_FACTORY_HPP
-
+#include "Elevator.hpp"
 
 class ElevatorFactory{
     public:
