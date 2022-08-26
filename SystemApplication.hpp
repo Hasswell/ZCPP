@@ -33,17 +33,17 @@ public:
         mElevatorSystems.setAlarmForElevators();
     }
     void addGroupdOfPeople(){
-        mQueueOfPassangers.push(currentGroup);
+        mQueueOfPassangers.push(mCurrentGroup);
     }
     void addNumberOfPeople(unsigned int numberOfPeople){
-        currentGroup.mNumberOfPeople = numberOfPeople;
+        mCurrentGroup.mNumberOfPeople = numberOfPeople;
     }
     void addDesignatedFloor(int designatedFloor){   
-        currentGroup.mDesignatedFloor = designatedFloor;
+        mCurrentGroup.mDesignatedFloor = designatedFloor;
         
     }
     void addStartingFloor(int startingFloor){
-        currentGroup.mStartingFloor = startingFloor;
+        mCurrentGroup.mStartingFloor = startingFloor;
     }
     int putFloorToElevator(int numberOfElevator){
         return mElevatorSystems.selectElevator(numberOfElevator).getCurrentFloor();
@@ -55,7 +55,7 @@ public:
 private:
     QueueOfPersons mQueueOfPassangers;
     PullOfElevators mElevatorSystems;
-    People currentGroup;
+    People mCurrentGroup;
 };
 
 
